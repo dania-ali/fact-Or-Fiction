@@ -1,0 +1,5 @@
+[
+  { "id": 1, "text": "Cracking your knuckles gives you arthritis.", "verdict": "fiction", "explanation": "TODO", "source": "TODO", "sourceUrl": "TODO" },
+  { "id": 2, "text": "Antibiotics cure the flu.", "verdict": "fiction", "explanation": "TODO", "source": "TODO", "sourceUrl": "TODO" },
+  { "id": 3, "text": "Washing your hands with soap helps prevent illness.", "verdict": "fact", "explanation": "TODO", "source": "TODO", "sourceUrl": "TODO" }
+]
