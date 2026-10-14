@@ -13,7 +13,7 @@ export default function App() {
         <Route path="/" element={<Play />} />
         <Route path="/submit" element={<Submit />} />
       </Routes>
-      <footer>Not medical advice. Ask a doctor or pharmacist about your health.</footer>
+      <footer>Not medical advice. Ask a medical professional about your health.</footer>
     </>
   )
 }

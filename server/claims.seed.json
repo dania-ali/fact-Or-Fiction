@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "text": "Cracking your knuckles gives you arthritis.",
+    "verdict": "fiction",
+    "explanation": "Research has not found evidence that habitual knuckle cracking causes osteoarthritis. Multiple studies found no significant association between knuckle cracking and hand arthritis.",
+    "source": "Journal of the American Board of Family Medicine",
+    "sourceUrl": "https://www.jabfm.org/content/24/2/169"
+  },
+  {
+    "id": 2,
+    "text": "Antibiotics cure the flu.",
+    "verdict": "fiction",
+    "explanation": "The flu is caused by a virus. CDC states that antibiotics treat bacterial infections and do not work against viruses like influenza.",
+    "source": "CDC - Treatment of Flu",
+    "sourceUrl": "https://www.cdc.gov/flu/treatment/index.html"
+  },
+  {
+    "id": 3,
+    "text": "Washing your hands with soap helps prevent illness.",
+    "verdict": "fact",
+    "explanation": "CDC states that handwashing with soap removes germs and helps prevent respiratory and diarrheal illnesses.",
+    "source": "CDC - About Handwashing",
+    "sourceUrl": "https://www.cdc.gov/clean-hands/about/index.html"
+  },
+  {
+    "id": 4,
+    "text": "Vaccines cause autism.",
+    "verdict": "fiction",
+    "explanation": "CDC reports that many studies have found no link between vaccines and autism spectrum disorder.",
+    "source": "CDC - Autism and Vaccines",
+    "sourceUrl": "https://www.cdc.gov/vaccine-safety/about/autism.html"
+  },
+  {
+    "id": 5,
+    "text": "Smoking increases the risk of lung cancer.",
+    "verdict": "fact",
+    "explanation": "The CDC identifies cigarette smoking as the leading cause of lung cancer and lung cancer deaths.",
+    "source": "CDC - Smoking and Cancer",
+    "sourceUrl": "https://www.cdc.gov/tobacco/campaign/tips/diseases/cancer.html"
+  },
+  {
+    "id": 6,
+    "text": "Humans only use 10% of their brains.",
+    "verdict": "fiction",
+    "explanation": "Brain imaging studies show that people use many parts of the brain throughout the day; the 10% claim is a myth.",
+    "source": "National Institute of Neurological Disorders and Stroke (NIH)",
+    "sourceUrl": "https://www.ninds.nih.gov"
+  },
+  {
+    "id": 7,
+    "text": "Regular physical activity improves health.",
+    "verdict": "fact",
+    "explanation": "WHO states that regular physical activity reduces the risk of heart disease, diabetes, and some cancers while improving mental health.",
+    "source": "World Health Organization",
+    "sourceUrl": "https://www.who.int/news-room/fact-sheets/detail/physical-activity"
+  },
+  {
+    "id": 8,
+    "text": "You should wait 24 hours before reporting a missing person.",
+    "verdict": "fiction",
+    "explanation": "Law enforcement agencies state there is no mandatory waiting period before reporting a missing person.",
+    "source": "FBI - Missing Persons",
+    "sourceUrl": "https://www.fbi.gov/how-we-can-help-you/more-fbi-services-and-information/vicap/missing-persons"
+  },
+  {
+    "id": 9,
+    "text": "Drinking water helps prevent dehydration.",
+    "verdict": "fact",
+    "explanation": "The NIH notes that water is essential for body functions and maintaining hydration.",
+    "source": "National Institute of Diabetes and Digestive and Kidney Diseases",
+    "sourceUrl": "https://www.niddk.nih.gov/health-information/kidney-disease/prevention"
+  },
+  {
+    "id": 10,
+    "text": "Sugar makes children hyperactive.",
+    "verdict": "fiction",
+    "explanation": "Research reviewed by NIH and other health organizations has not shown that sugar causes hyperactivity in most children.",
+    "source": "MedlinePlus (NIH)",
+    "sourceUrl": "https://medlineplus.gov"
+  },
+  {
+    "id": 11,
+    "text": "Seat belts reduce the risk of serious injury in car crashes.",
+    "verdict": "fact",
+    "explanation": "Seat belts save lives and reduce serious crash-related injuries by keeping occupants securely positioned.",
+    "source": "NHTSA",
+    "sourceUrl": "https://www.nhtsa.gov/seat-belts"
+  },
+  {
+    "id": 12,
+    "text": "Cold weather alone causes the common cold.",
+    "verdict": "fiction",
+    "explanation": "Colds are caused by viruses, not simply by being exposed to cold temperatures.",
+    "source": "CDC - Common Cold",
+    "sourceUrl": "https://www.cdc.gov/common-cold/about/index.html"
+  },
+  {
+    "id": 13,
+    "text": "Getting enough sleep is important for health.",
+    "verdict": "fact",
+    "explanation": "CDC states that sufficient sleep supports physical health, mental health, and cognitive performance.",
+    "source": "CDC - About Sleep",
+    "sourceUrl": "https://www.cdc.gov/sleep/about_sleep/index.html"
+  },
+  {
+    "id": 14,
+    "text": "Chocolate causes acne.",
+    "verdict": "fiction",
+    "explanation": "Research has not established chocolate itself as a direct cause of acne.",
+    "source": "NIH - MedlinePlus Acne",
+    "sourceUrl": "https://medlineplus.gov/acne.html"
+  },
+  {
+    "id": 15,
+    "text": "Sunscreen helps protect against skin cancer.",
+    "verdict": "fact",
+    "explanation": "The FDA and CDC recommend sunscreen use because it helps protect skin from harmful UV radiation that can contribute to skin cancer.",
+    "source": "FDA - Sunscreen",
+    "sourceUrl": "https://www.fda.gov/drugs/resources-you-drugs/sunscreen-how-help-protect-your-skin-sun"
+  }
+]
