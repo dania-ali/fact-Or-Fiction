@@ -5,7 +5,8 @@
     "verdict": "fiction",
     "explanation": "Research has not found evidence that habitual knuckle cracking causes osteoarthritis. Multiple studies found no significant association between knuckle cracking and hand arthritis.",
     "source": "Journal of the American Board of Family Medicine",
-    "sourceUrl": "https://www.jabfm.org/content/24/2/169"
+    "sourceUrl": "https://www.jabfm.org/content/24/2/169",
+    "translations": {"es": { "text": "Crujirse los nudillos te da artritis.", "explanation": "La investigación no ha encontrado evidencia de que el crujido habitual de los nudillos cause artrosis. Varios estudios no encontraron una asociación significativa entre crujir los nudillos y la artritis en las manos.", "reviewed": true}}
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "verdict": "fiction",
     "explanation": "The flu is caused by a virus. CDC states that antibiotics treat bacterial infections and do not work against viruses like influenza.",
     "source": "CDC - Treatment of Flu",
-    "sourceUrl": "https://www.cdc.gov/flu/treatment/index.html"
+    "sourceUrl": "https://www.cdc.gov/flu/treatment/index.html",
+    "translations": {"es": { "text": "Los antibióticos curan la gripe.", "explanation": "La gripe es causada por un virus. Los CDC dicen que los antibióticos tratan infecciones bacterianas y no funcionan contra virus como la influenza.", "reviewed": true }}
   },
   {
     "id": 3,
@@ -21,7 +23,8 @@
     "verdict": "fact",
     "explanation": "CDC states that handwashing with soap removes germs and helps prevent respiratory and diarrheal illnesses.",
     "source": "CDC - About Handwashing",
-    "sourceUrl": "https://www.cdc.gov/clean-hands/about/index.html"
+    "sourceUrl": "https://www.cdc.gov/clean-hands/about/index.html",
+    "translations": {"es": { "text": "Lavarse las manos con jabón ayuda a prevenir enfermedades.", "explanation": "El CDC dice que lavarse las manos con jabón elimina los gérmenes y ayuda a prevenir enfermedades respiratorias y diarreas.", "reviewed": true }}
   },
   {
     "id": 4,
@@ -29,7 +32,8 @@
     "verdict": "fiction",
     "explanation": "CDC reports that many studies have found no link between vaccines and autism spectrum disorder.",
     "source": "CDC - Autism and Vaccines",
-    "sourceUrl": "https://www.cdc.gov/vaccine-safety/about/autism.html"
+    "sourceUrl": "https://www.cdc.gov/vaccine-safety/about/autism.html",
+    "translations": {"es": { "text": "Las vacunas causan autismo.", "explanation": "Los CDC informan que muchos estudios no han encontrado relación entre las vacunas y el trastorno del espectro autista.", "reviewed": true }}
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "verdict": "fact",
     "explanation": "The CDC identifies cigarette smoking as the leading cause of lung cancer and lung cancer deaths.",
     "source": "CDC - Smoking and Cancer",
-    "sourceUrl": "https://www.cdc.gov/tobacco/campaign/tips/diseases/cancer.html"
+    "sourceUrl": "https://www.cdc.gov/tobacco/campaign/tips/diseases/cancer.html",
+    "translations": {"es": { "text": "Fumar aumenta el riesgo de cáncer de pulmón.", "explanation": "Los CDC identifican fumar cigarrillos como la principal causa de cáncer de pulmón y de muertes por cáncer de pulmón.", "reviewed": true }}
   },
   {
     "id": 6,

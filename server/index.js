@@ -14,12 +14,26 @@ app.get("/api/claims", (req, res) => {
 });
 
 app.get("/api/claims/round", (req, res) => {
+  const lang = req.query.lang === "es" ? "es" : "en";
   const rows = db
     .prepare(
-      `SELECT ${FIELDS} FROM claims WHERE status = 'verified' ORDER BY RANDOM() LIMIT 5`
+      `SELECT c.id, c.verdict, c.source, c.source_url AS sourceUrl,
+              COALESCE(t.text, c.text) AS text,
+              COALESCE(t.explanation, c.explanation) AS explanation,
+              CASE WHEN t.claim_id IS NOT NULL THEN 1 ELSE 0 END AS translated
+       FROM claims c
+       LEFT JOIN claim_translations t
+         ON t.claim_id = c.id AND t.language = ? AND t.reviewed = 1
+       WHERE c.status = 'verified'
+       ORDER BY RANDOM() LIMIT 5`
     )
-    .all();
-  res.json(rows);
+    .all(lang);
+  res.json(
+    rows.map(({ translated, ...r }) => ({
+      ...r,
+      language: translated ? lang : "en",
+    }))
+  );
 });
 
 app.post("/api/claims", (req, res) => {
