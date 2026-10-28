@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Submit() {
+export default function Submit({ lang, t }) {
   const [text, setText] = useState("");
   const [error, setError] = useState(null);
   const [saved, setSaved] = useState(false);
@@ -9,31 +9,32 @@ export default function Submit() {
     e.preventDefault();
     setError(null);
     setSaved(false);
+    if (!text.trim()) {
+      setError(t.claimRequired);
+      return;
+    }
     try {
       const res = await fetch("/api/claims", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text }),
+        body: JSON.stringify({ text, language: lang }),
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.error || "Something went wrong");
+        setError(data.error || t.submitError);
         return;
       }
       setSaved(true);
       setText("");
     } catch {
-      setError("Couldn't reach the server. Try again.");
+      setError(t.submitError);
     }
   }
 
   return (
     <div>
-      <h1>Submit a claim</h1>
-      <p>
-        Heard a health claim you want checked? Send it in. Submitted claims are
-        held for review and don't appear in the game automatically.
-      </p>
+      <h1>{t.submitTitle}</h1>
+      <p>{t.submitIntro}</p>
       <form onSubmit={handleSubmit}>
         <textarea
           value={text}
@@ -42,10 +43,10 @@ export default function Submit() {
           maxLength={280}
         />
         <br />
-        <button type="submit">Submit</button>
+        <button type="submit">{t.submitButton}</button>
       </form>
       {error && <p role="alert">{error}</p>}
-      {saved && <p>Thanks! Your claim was saved and is pending review.</p>}
+      {saved && <p>{t.saved}</p>}
     </div>
   );
 }

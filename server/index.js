@@ -25,7 +25,8 @@ app.get("/api/claims/round", (req, res) => {
        LEFT JOIN claim_translations t
          ON t.claim_id = c.id AND t.language = ? AND t.reviewed = 1
        WHERE c.status = 'verified'
-       ORDER BY RANDOM() LIMIT 5`
+       ORDER BY t.claim_id IS NULL, RANDOM()
+       LIMIT 5`
     )
     .all(lang);
   res.json(
@@ -38,6 +39,7 @@ app.get("/api/claims/round", (req, res) => {
 
 app.post("/api/claims", (req, res) => {
   const text = typeof req.body?.text === "string" ? req.body.text.trim() : "";
+  const language = req.body?.language === "es" ? "es" : "en";
   if (!text) {
     return res.status(400).json({ error: "Claim is required" });
   }
@@ -47,9 +49,11 @@ app.post("/api/claims", (req, res) => {
       .json({ error: "Claim is too long (280 characters max)" });
   }
   const info = db
-    .prepare("INSERT INTO claims (text, status) VALUES (?, 'pending')")
-    .run(text);
-  res.status(201).json({ id: info.lastInsertRowid, text, status: "pending" });
+    .prepare("INSERT INTO claims (text, language, status) VALUES (?, ?, 'pending')")
+    .run(text, language);
+  res
+    .status(201)
+    .json({ id: info.lastInsertRowid, text, language, status: "pending" });
 });
 
 app.listen(3001, () => console.log("API on http://localhost:3001"));

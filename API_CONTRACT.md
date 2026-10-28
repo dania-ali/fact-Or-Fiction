@@ -1,12 +1,19 @@
-GET  /api/claims
-     → 200 [{ id, text, verdict, explanation, source, sourceUrl }]  (all verified claims, English only)
+### GET /api/claims
+All verified claims, English only.
+- **200** `[{ id, text, verdict, explanation, source, sourceUrl }]`
+- `verdict` is `"fact"` or `"fiction"`
 
-GET  /api/claims/round?lang=en|es
-     → 200 five random verified claims: [{ id, text, verdict, explanation, source, sourceUrl, language }]
-     language is "es" only if a reviewed Spanish version exists, otherwise "en" (fallback)
-     any other lang value is treated as "en"
+### GET /api/claims/round?lang=en|es
+A round of five random verified claims.
+- **200** `[{ id, text, verdict, explanation, source, sourceUrl, language }]`
+- `language` is `"es"` only if a reviewed Spanish version exists for that claim, otherwise `"en"` (fallback). When it is `"en"` on a Spanish request, the text and explanation are the English ones.
+- When `lang=es`, claims with a reviewed Spanish version are returned first.
+- Any other `lang` value is treated as `"en"`.
+- Returns fewer than five claims only if fewer than five verified claims exist.
 
-POST /api/claims   body { text, language? }   (language "en" or "es", default "en"; wired in L14)
-     → 201 { id, text, language, status: "pending" }
-     → 400 { error: "Claim is required" } if text is empty
-     → 400 { error: "Claim is too long (280 characters max)" } if over 280 characters
+### POST /api/claims
+Submit a claim someone has heard. It is saved as pending and never shown in the game until reviewed.
+- **Body** `{ text, language? }`, where `language` is `"en"` or `"es"` and defaults to `"en"`
+- **201** `{ id, text, language, status: "pending" }`
+- **400** `{ "error": "Claim is required" }` if `text` is missing or only whitespace
+- **400** `{ "error": "Claim is too long (280 characters max)" }` if `text` is over 280 characters

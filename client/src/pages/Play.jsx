@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import ClaimCard from "../components/ClaimCard.jsx";
 
-export default function Play() {
+export default function Play({ lang, t }) {
   const [claims, setClaims] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
   const [index, setIndex] = useState(0);
   const [guess, setGuess] = useState(null);
   const [results, setResults] = useState([]);
 
   function loadRound() {
     setLoading(true);
-    setError(null);
-    fetch("/api/claims/round")
+    setError(false);
+    fetch(`/api/claims/round?lang=${lang}`)
       .then((res) => {
         if (!res.ok) throw new Error("Server error");
         return res.json();
@@ -23,11 +23,13 @@ export default function Play() {
         setGuess(null);
         setResults([]);
       })
-      .catch(() => setError("Couldn't load claims. Is the server running?"))
+      .catch(() => setError(true))
       .finally(() => setLoading(false));
   }
 
-  useEffect(() => { loadRound(); }, []);
+  // New round whenever the language changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => { loadRound(); }, [lang]);
 
   const claim = claims[index];
   const score = results.filter((r) => r.correct).length;
@@ -50,46 +52,57 @@ export default function Play() {
     setIndex(index + 1);
   }
 
-  if (loading) return <p>Loading claims...</p>;
+  if (loading) return <p>{t.loading}</p>;
 
   if (error) {
     return (
       <div>
-        <p>{error}</p>
-        <button onClick={loadRound}>Try again</button>
+        <p>{t.loadError}</p>
+        <button onClick={loadRound}>{t.tryAgain}</button>
       </div>
     );
   }
 
-  if (claims.length === 0) return <p>No claims yet. Check back soon.</p>;
+  if (claims.length === 0) return <p>{t.noClaims}</p>;
 
   if (index >= claims.length) {
     return (
       <div>
-        <h2>Score: {score} / {claims.length}</h2>
+        <h2>{t.score}: {score} / {claims.length}</h2>
         <ul>
           {results.map((r) => (
             <li key={r.id}>
-              {r.correct ? "✓" : "✗"} {r.text} ({r.verdict})
+              {r.correct ? "✓" : "✗"} {r.text} ({t[r.verdict]})
             </li>
           ))}
         </ul>
-        <button onClick={loadRound}>Play again</button>
+        <button onClick={loadRound}>{t.playAgain}</button>
       </div>
     );
   }
 
   return (
     <div>
-      <p>Answered {results.length} of {claims.length} · Score {score}</p>
-      <ClaimCard claim={claim} onAnswer={handleAnswer} disabled={guess !== null} />
+      <p>
+        {t.answered} {results.length} {t.of} {claims.length} · {t.score} {score}
+      </p>
+      {lang === "es" && claim.language !== "es" && <p>{t.notTranslated}</p>}
+      <ClaimCard
+        claim={claim}
+        onAnswer={handleAnswer}
+        disabled={guess !== null}
+        factLabel={t.fact}
+        fictionLabel={t.fiction}
+      />
       {guess && (
         <div>
-          <p>{guess === claim.verdict ? "Right!" : "Not quite."} It's {claim.verdict}.</p>
+          <p>
+            {guess === claim.verdict ? t.right : t.notQuite} {t.answerIs} {t[claim.verdict]}.
+          </p>
           <p>{claim.explanation}</p>
           <a href={claim.sourceUrl} target="_blank" rel="noreferrer">{claim.source}</a>
           <br />
-          <button onClick={next}>Next</button>
+          <button onClick={next}>{t.next}</button>
         </div>
       )}
     </div>

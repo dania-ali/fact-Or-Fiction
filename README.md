@@ -1,8 +1,8 @@
 # Fact or Fiction
 
-An interactive health literacy game for teens and immigrant families. You see a health claim, guess whether it's fact or fiction, and then get the verdict, a plain-language explanation, and a link to a trusted source.
+An interactive health literacy game for teens and immigrant families, in English and Spanish. You see a health claim, guess whether it's fact or fiction, and then get the verdict, a plain-language explanation, and a link to a trusted source.
 
-> **Not medical advice.** This app is for education only. Ask medical professional about your own health.
+> **Not medical advice.** This app is for education only. Ask a medical professional about your own health.
 
 Built as a Code2College Full Stack Web project.
 
@@ -10,7 +10,9 @@ Built as a Code2College Full Stack Web project.
 
 - Play a round of 5 random claims and see your score at the end
 - Every claim has an explanation and a source link (CDC, NIH, WHO or similar)
-- Submit a health claim you've heard. It's saved as pending review and is not shown in the game
+- Switch between English and Spanish. Your choice is remembered after a reload
+- A claim without a reviewed Spanish version shows in English with a note, never a blank card
+- Submit a health claim you've heard. It's saved as pending review, with the language you submitted it in, and is not shown in the game
 - Friendly loading, error, and empty states
 
 ## Tech stack
@@ -45,11 +47,15 @@ npm run dev
 
 Open http://localhost:5173. In a Codespace, open port 5173 from the Ports tab.
 
-`npm run seed` fills the database from `server/claims.seed.json`. Run it again after you edit that file.
+## Claims and translations
+
+Claims live in `server/claims.seed.json`. Each claim can have a `translations.es` block with Spanish text and explanation. Run `npm run seed` after editing the file.
+
+A Spanish translation is only shown once it's marked `"reviewed": true`. Until then the app falls back to English for that claim. Only mark a translation reviewed after a fluent speaker has checked it.
 
 ## See submitted claims
 
-Submitted claims are stored as pending and never shown in the app. To list them:
+Submitted claims are stored as pending and never shown in the app. To list them, with their language:
 
 ```
 cd server
@@ -60,16 +66,29 @@ npm run pending
 
 Full details are in [API_CONTRACT.md](API_CONTRACT.md).
 
-## Project structure
+| Method | Route | What it does |
+|---|---|---|
+| GET | `/api/claims` | All verified claims (English) |
+| GET | `/api/claims/round?lang=en\|es` | 5 random verified claims, reviewed Spanish first when `lang=es` |
+| POST | `/api/claims` | Save a submitted claim as pending, with its language |
+
+## Project structure 
 
 ```
-client/   React app (pages, components)
+client/   React app (pages, components, interface text in strings.js)
 server/   Express API, SQLite database, seed data
 SPEC.md             what the app does and how it's tested
 API_CONTRACT.md     the agreement between front end and back end
+ARCHITECTURE.md     page → API → database diagram
 ACCEPTANCE.md       results of checking each acceptance criterion
 AI_LOG.md           how AI was used while building this
 ```
+
+## Known limitations
+
+- Spanish is available for 5 of 15 claims. The rest fall back to English
+- No admin screen: pending claims are reviewed by querying the database
+- The submit endpoint has no rate limiting
 
 ## AI usage
 

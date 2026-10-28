@@ -27,3 +27,15 @@
 - Got: Explanations of each, and a fix for the git problems
 - What I did with it: Opened port 5173 for the app and used /api/ URLs for the server. Created the capstone branch (I had been on main), ran git rm --cached on claims.db, and created the missing .gitignore. [Say if you pasted the contract into the terminal by mistake.]
 - What I learned / verified: Cannot GET / means the Express server is running, it just has no route at /. The .gitignore I was told to make earlier never existed, so git was tracking my database, and I caught it from git status. Verified by checking git status showed On branch capstone and no claims.db in the lists.
+
+## 2026-10-28
+- Asked: How to build the front-end half of my capstone: an English/Spanish switch, a fallback note, a saved language choice, and the Submit form sending language
+- Got: Steps for strings.js, App.jsx with the language state, Play.jsx, ClaimCard.jsx, Submit.jsx, and server changes so the round route puts reviewed Spanish claims first and POST saves the language
+- What I did with it: Followed steps, created the files, replaced the server handlers, and updated pending.js to show the language column. The Spanish interface text in strings.js was drafted by the assistant, so I verified with Google Translate.
+- What I learned / verified: Tested all four Version 2 criteria. (1) Switched to Español and got a new round with claims, explanations, and buttons in Spanish where a reviewed translation exists, and switching back gave English. (2) Selected Español, reloaded, and the dropdown and round were still Spanish. (3) A claim without a reviewed translation showed in English with the "not available in Spanish yet" note. (4) Submitted a claim with Español selected, ran npm run pending, and the row showed language es and status pending; an empty submit showed an error and added no row. 
+
+## 2026-10-28
+- Asked: To help update API contract and update SPEC.md and the README for the Spanish version
+- Got: steps to edit API_CONTRACT.md, spec, README that covers the language switch and the reviewed flag
+- What I did with it: Followed steps and checked each contract line against my code. 
+- What I learned / verified: The spec and README were out of date after the build, since the spec still listed translations as out of scope. I caught that by comparing them to the app.
